@@ -22,7 +22,7 @@ window.onload = function() {
 	document.getElementById('logout').addEventListener('click', function() {
 		if (confirm('Вы действительно хотите выйти?')) {
 			VK.Auth.logout(function(authData) {
-				localStorage.setItem('auth', null);
+				localStorage.setItem('auth', '');
 				console.log(authData);
 			});
 			document.getElementById('auth-status').textContent = 'Авторизируйтесь';
