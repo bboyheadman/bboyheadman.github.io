@@ -2,13 +2,10 @@
 
 window.onload = function() {
 	authCheck();
-
 	document.getElementById('login').addEventListener('click', login);
 	document.getElementById('logout').addEventListener('click', logout);
-
+	
 }
-
-
 
 function login() {
 	VK.Auth.login(function(authData) {
