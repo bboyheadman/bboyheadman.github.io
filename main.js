@@ -2,7 +2,8 @@
 
 window.onload = function() {
 	if (localStorage.auth) {
-		localStorage.getItem('auth')
+		var auth = JSON.parse(localStorage.getItem('auth'));
+		document.getElementById('auth-status').textContent = ('Авторизирован как ' + auth.user.first_name + ' ' + auth.user.last_name);
 	} else {
 		document.getElementById('auth-status').textContent = 'Авторизируйтесь';
 	}
@@ -10,9 +11,10 @@ window.onload = function() {
 	document.getElementById('login').addEventListener('click', function() {
 		VK.Auth.login(function(authData) {
 			console.log(authData);
-			localStorage.setItem('auth', JSON.stringify(authData));
+			localStorage.setItem('auth', JSON.stringify(authData.session));
 			// alert('Авторизирован как ' + authData.session.user.first_name + ' ' + authData.session.user.last_name);
-			document.getElementById('auth-status').textContent = ('Авторизирован как ' + authData.session.user.first_name + ' ' + authData.session.user.last_name);
+			var auth = JSON.parse(localStorage.getItem('auth'));
+			document.getElementById('auth-status').textContent = ('Авторизирован как ' + auth.user.first_name + ' ' + auth.user.last_name);
 		}, 8192)
 	});
 
