@@ -6,7 +6,6 @@ window.onload = function() {
 	authCheck();
 	document.getElementById('login').addEventListener('click', login);
 	document.getElementById('logout').addEventListener('click', logout);
-	
 }
 
 function login() {
@@ -37,4 +36,13 @@ function authCheck() {
 	} else {
 		GE.title.textContent = 'Авторизируйтесь';
 	}
+}
+
+function getAllGroups() {
+	VK.Api.call('groups.get', {
+		extended: true,
+		v: 5.63
+	}, function(resp) {
+		console.log(resp);
+	});
 }
