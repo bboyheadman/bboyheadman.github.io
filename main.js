@@ -1,7 +1,7 @@
 
 
 window.onload = function() {
-	if (localStorage.auth) {
+	if (localStorage.getItem('auth')) {
 		var auth = JSON.parse(localStorage.getItem('auth'));
 		document.getElementById('auth-status').textContent = ('Авторизирован как ' + auth.user.first_name + ' ' + auth.user.last_name);
 	} else {
