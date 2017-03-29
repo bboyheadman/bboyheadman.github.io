@@ -1,7 +1,7 @@
 
 
 window.onload = function() {
-	
+	authCheck();
 
 	document.getElementById('login').addEventListener('click', login);
 	document.getElementById('logout').addEventListener('click', logout);
@@ -34,7 +34,7 @@ function authCheck() {
 	if (localStorage.getItem('auth')) {
 		var auth = JSON.parse(localStorage.getItem('auth'));
 		console.log(auth);
-		document.querySelector('title').textContent = ('Авторизирован как ' + auth.user.first_name + ' ' + auth.user.last_name);
+		document.querySelector('title').textContent = (auth.user.first_name + ' ' + auth.user.last_name);
 	} else {
 		document.querySelector('title').textContent = 'Авторизируйтесь';
 	}
