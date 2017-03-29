@@ -3,6 +3,7 @@
 window.onload = function() {
 	if (localStorage.getItem('auth')) {
 		var auth = JSON.parse(localStorage.getItem('auth'));
+		console.log(auth);
 		document.getElementById('auth-status').textContent = ('Авторизирован как ' + auth.user.first_name + ' ' + auth.user.last_name);
 	} else {
 		document.getElementById('auth-status').textContent = 'Авторизируйтесь';
