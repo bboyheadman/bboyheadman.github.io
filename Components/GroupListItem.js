@@ -21,7 +21,7 @@ GroupListItem.prototype.createElement = function() {
 		font: '1em Arial',
 	}
 
-	container.appndChild(spanTitle);
+	container.appendChild(spanTitle);
 
 	return container;
 }
