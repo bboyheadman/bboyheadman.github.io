@@ -10,17 +10,14 @@ function GroupListItem(groupInfo) {
 
 GroupListItem.prototype.createElement = function() {
 	var container = document.createElement('div');
-	container.style = {
-		width: '300px',
-		minHeight: '100px',
-		background: '#eee',
-	}
+	container.style.width = '300px';
+	container.style.height = '100px';
+	container.style.background = '#eee';
 	
 	var spanTitle = document.createElement('span');
-	spanTitle.style = {
-		font: '1em Arial',
-	}
-
+	spanTitle.style.font: '1em Arial';
+	spanTitle.textContent = this.name;
+	
 	container.appendChild(spanTitle);
 
 	return container;
