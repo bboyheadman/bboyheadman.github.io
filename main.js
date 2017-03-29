@@ -2,12 +2,11 @@ var GE = {
 	title: document.querySelector('title'),
 }
 
-var alllllll = [];
-
 window.onload = function() {
 	authCheck();
 	document.getElementById('login').addEventListener('click', login);
 	document.getElementById('logout').addEventListener('click', logout);
+	document.getElementById('logout').addEventListener('click', getAllGroups);
 }
 
 function login() {
@@ -46,6 +45,8 @@ function getAllGroups() {
 		v: 5.63
 	}, function(resp) {
 		console.log(resp);
-		alllllll = resp;
+		resp.response.items.map(function(item, index) {
+			document.body.appendChild(new GroupListItem(item));
+		});
 	});
 }
