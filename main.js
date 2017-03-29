@@ -1,4 +1,6 @@
-
+var GE = {
+	title: document.querySelector('title'),
+}
 
 window.onload = function() {
 	authCheck();
@@ -13,7 +15,7 @@ function login() {
 		localStorage.setItem('auth', JSON.stringify(authData.session));
 		// alert('Авторизирован как ' + authData.session.user.first_name + ' ' + authData.session.user.last_name);
 		var auth = JSON.parse(localStorage.getItem('auth'));
-		document.getElementById('auth-status').textContent = ('Авторизирован как ' + auth.user.first_name + ' ' + auth.user.last_name);
+		GE.title.textContent = (auth.user.first_name + ' ' + auth.user.last_name);
 	}, 8192)
 }
 
@@ -22,8 +24,8 @@ function logout() {
 		VK.Auth.logout(function(authData) {
 			localStorage.setItem('auth', '');
 			console.log(authData);
+			GE.title.textContent = 'Авторизируйтесь';
 		});
-		document.getElementById('auth-status').textContent = 'Авторизируйтесь';
 	}
 }
 
@@ -31,8 +33,8 @@ function authCheck() {
 	if (localStorage.getItem('auth')) {
 		var auth = JSON.parse(localStorage.getItem('auth'));
 		console.log(auth);
-		document.querySelector('title').textContent = (auth.user.first_name + ' ' + auth.user.last_name);
+		GE.title.textContent = (auth.user.first_name + ' ' + auth.user.last_name);
 	} else {
-		document.querySelector('title').textContent = 'Авторизируйтесь';
+		GE.title.textContent = 'Авторизируйтесь';
 	}
 }
