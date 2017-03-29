@@ -5,6 +5,7 @@ window.onload = function() {
 		VK.Auth.login(function(authData) {
 			console.log(authData);
 			localStorage.setItem('auth', authData);
+			alert('Авторизирован как ' + authData.session.first_name + ' ' + authData.session.last_name);
 		}, 8192)
 	});
 	document.getElementById('logout').addEventListener('click', function() {
