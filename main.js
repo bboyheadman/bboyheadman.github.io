@@ -9,9 +9,11 @@ window.onload = function() {
 		}, 8192)
 	});
 	document.getElementById('logout').addEventListener('click', function() {
-		VK.Auth.logout(function(authData) {
-			console.log(authData);
-			localStorage.setItem('auth', null);
-		});
+		if (confirm('Вы действительно хотите выйти?')) {
+			VK.Auth.logout(function(authData) {
+				console.log(authData);
+				localStorage.setItem('auth', null);
+			});
+		}
 	});
 }
