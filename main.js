@@ -2,6 +2,8 @@ var GE = {
 	title: document.querySelector('title'),
 }
 
+var alllllll = [];
+
 window.onload = function() {
 	authCheck();
 	document.getElementById('login').addEventListener('click', login);
@@ -44,5 +46,6 @@ function getAllGroups() {
 		v: 5.63
 	}, function(resp) {
 		console.log(resp);
+		alllllll = resp;
 	});
 }
