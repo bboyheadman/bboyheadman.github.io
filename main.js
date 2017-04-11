@@ -57,7 +57,7 @@ function getAllStickers() {
 			console.log(item);
 			var li = document.createElement('li');
 			li.innerHTML = `
-				<img class="pack-image" src="` + item.photo_35 + `">
+				<img class="pack-image" src="` + item.photo_70 + `">
 				<span class="pack-title">` + item.product.title + `</span>
 			`;
 			stickerPacksList.appendChild(li);
