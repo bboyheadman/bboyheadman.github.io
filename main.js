@@ -2,6 +2,8 @@ var GE = {
 	title: document.querySelector('title'),
 }
 
+var stickerPacksList = document.getElementById('sticker-packs-list');
+
 window.onload = function() {
 	authCheck();
 	document.getElementById('login').addEventListener('click', login);
@@ -50,5 +52,13 @@ function getAllStickers() {
 		v: 5.63
 	}, function(resp) {
 		console.log(resp);
+		resp.response.items.map(function(item, index) {
+			console.log(item);
+			var img = document.createElement('img');
+			var li = document.createElement('li');
+			img.src = item.photo_35;
+			li.appendChild(img);
+			stickerPacksList.appendChild(li);
+		});
 	});
 }
