@@ -91,7 +91,7 @@ StickerPack.prototype.createElement = function() {
 			this.pack.product.stickers.sticker_ids.map(function(item, index) {
 				var img = document.createElement('img');
 				img.src = (self.pack.product.stickers.base_url + item + '/128.png' );
-				this.allStickersRenderedList.appendChild(img);
+				self.allStickersRenderedList.appendChild(img);
 			});
 		} else {
 			this.allStickersRenderedList.innerHTML = '';
