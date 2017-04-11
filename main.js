@@ -86,11 +86,14 @@ StickerPack.prototype.createElement = function() {
 	this.rendered.appendChild(this.allStickersRenderedList);
 
 	this.rendered.addEventListener('click', function() {
-		console.log(this.pack);
+		console.log(this);
 		if (this.closed) {
 			this.pack.product.stickers.sticker_ids.map(function(item, index) {
 				var img = document.createElement('img');
 				img.src = (self.pack.product.stickers.base_url + item + '/128.png' );
+				img.addEventListener('click', function(e) {
+					console.log(e);
+				});
 				self.allStickersRenderedList.appendChild(img);
 			});
 		} else {
