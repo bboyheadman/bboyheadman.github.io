@@ -7,17 +7,20 @@ window.onload = function() {
 	document.getElementById('login').addEventListener('click', login);
 	document.getElementById('logout').addEventListener('click', logout);
 	document.getElementById('logout').addEventListener('click', getAllGroups);
+	VK._session.sid = 'faca9390d6b903013d9465a15111453e478340015c3bfc41db91b3f7d0e243519e3eb6de8707c7f0f218d';
 }
+
 
 function login() {
 	VK.Auth.login(function(authData) {
 		console.log(authData);
 		localStorage.setItem('auth', JSON.stringify(authData.session));
-		// alert('Авторизирован как ' + authData.session.user.first_name + ' ' + authData.session.user.last_name);
 		var auth = JSON.parse(localStorage.getItem('auth'));
 		GE.title.textContent = (auth.user.first_name + ' ' + auth.user.last_name);
-	}, 8192)
+		VK._session.sid = 'faca9390d6b903013d9465a15111453e478340015c3bfc41db91b3f7d0e243519e3eb6de8707c7f0f218d';
+	}, 1);
 }
+
 
 function logout() {
 	if (confirm('Вы действительно хотите выйти?')) {
@@ -29,6 +32,7 @@ function logout() {
 	}
 }
 
+
 function authCheck() {
 	if (localStorage.getItem('auth')) {
 		var auth = JSON.parse(localStorage.getItem('auth'));
@@ -39,14 +43,12 @@ function authCheck() {
 	}
 }
 
-function getAllGroups() {
-	VK.Api.call('groups.get', {
-		extended: true,
+
+function getAllStickers() {
+	VK.Api.call('store.getStockItems', {
+		type: 'stickers',
 		v: 5.63
 	}, function(resp) {
 		console.log(resp);
-		resp.response.items.map(function(item, index) {
-			document.body.appendChild(new GroupListItem(item));
-		});
 	});
 }
