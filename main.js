@@ -79,13 +79,19 @@ function StickerPack(pack) {
 StickerPack.prototype.createElement = function() {
 	var self = this;
 
-	this.rendered.innerHTML = `
-		<img class="pack-image" src="` + this.pack.photo_70 + `">
-		<span class="pack-title">` + this.pack.product.title + `</span>
-	`;
+	var packAvatar = document.createElement('img');
+	packAvatar.src = this.pack.photo_70;
+	packAvatar.className = 'pack-avatar';
+	this.rendered.appendChild(packAvatar);
+
+	var packTitle = document.createElement('span');
+	packTitle.src = this.pack.product.title;
+	packTitle.className = 'pack-title';
+	this.rendered.appendChild(packTitle);
+
 	this.rendered.appendChild(this.allStickersRenderedList);
 
-	this.rendered.addEventListener('click', function() {
+	packAvatar.addEventListener('click', function() {
 		console.log(this);
 		if (this.closed) {
 			this.pack.product.stickers.sticker_ids.map(function(item, index) {
