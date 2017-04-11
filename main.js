@@ -2,6 +2,8 @@ var GE = {
 	title: document.querySelector('title'),
 }
 
+var PACKS = [];
+
 var stickerPacksList = document.getElementById('sticker-packs-list');
 
 window.onload = function() {
@@ -54,14 +56,33 @@ function getAllStickers() {
 	}, function(resp) {
 		console.log(resp);
 		stickerPacksList.innerHTML = '';
+		ROWS = [];
 		resp.response.items.map(function(item, index) {
 			console.log(item);
-			var li = document.createElement('li');
-			li.innerHTML = `
-				<img class="pack-image" src="` + item.photo_70 + `">
-				<span class="pack-title">` + item.product.title + `</span>
-			`;
-			stickerPacksList.appendChild(li);
+			ROWS.push(new StickerPack(item));
 		});
+		renderAllPacks();
 	});
+}
+
+function renderAllPacks() {
+	PACKS.map(function(item, index) {
+		stickerPacksList.appendChild(item.createElement());
+	});
+}
+
+function StickerPack(pack) {
+	this.pack = pack;
+	this.rendered = document.createElement('li');
+}
+
+StickerPack.prototype.createElement = function() {
+	var self = this;
+
+	this.rendered.innerHTML = `
+		<img class="pack-image" src="` + this.pack.photo_70 + `">
+		<span class="pack-title">` + this.pack.product.title + `</span>
+	`;
+
+	return this.rendered;
 }
