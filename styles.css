@@ -1,8 +1,15 @@
+* {
+  transition-duration: 1s;
+}
+
+
 .sticker-packs-wrapper {
   text-align: center;
   width: 80%;
   margin: 0 auto;
 }
+
+
 .sticker-packs-wrapper li {
   display: inline-block;
   text-align: center;
@@ -13,16 +20,19 @@
   cursor: pointer;
 }
 
+
 .pack-avatar {
   display: block;
   width: 60px;
   margin: 0 auto;
 }
 
+
 .pack-title {
   display: block;
   font: 1em Arial;
 }
+
 
 img {
   width: 60px;
