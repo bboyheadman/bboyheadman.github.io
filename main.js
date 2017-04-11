@@ -100,7 +100,6 @@ StickerPack.prototype.createElement = function() {
 				sticker.addEventListener('click', function(e) {
 					console.log(this);
 					this.cell.style.width = '150px';
-					this.cell.bordered = false;
 					if (!this.cell.bordered) {
 						this.cell.src = (self.pack.product.stickers.base_url + item + '/512.png');
 					} else {
