@@ -56,8 +56,11 @@ function getAllStickers() {
 			console.log(item);
 			var img = document.createElement('img');
 			var li = document.createElement('li');
+			var title = document.createElement('span');
 			img.src = item.photo_35;
+			title.textContent = item.product.title;
 			li.appendChild(img);
+			li.appendChild(title);
 			stickerPacksList.appendChild(li);
 		});
 	});
