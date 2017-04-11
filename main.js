@@ -58,7 +58,7 @@ function getAllStickers() {
 		stickerPacksList.innerHTML = '';
 		PACKS = [];
 		resp.response.items.map(function(item, index) {
-			console.log(item);
+			// console.log(item);
 			PACKS.push(new StickerPack(item));
 		});
 		renderAllPacks();
