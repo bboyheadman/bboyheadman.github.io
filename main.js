@@ -54,7 +54,7 @@ function getAllStickers() {
 		type: 'stickers',
 		v: 5.63
 	}, function(resp) {
-		console.log(resp);
+		// console.log(resp);
 		stickerPacksList.innerHTML = '';
 		PACKS = [];
 		resp.response.items.map(function(item, index) {
@@ -83,6 +83,10 @@ StickerPack.prototype.createElement = function() {
 		<img class="pack-image" src="` + this.pack.photo_70 + `">
 		<span class="pack-title">` + this.pack.product.title + `</span>
 	`;
+
+	this.rendered.addEventListener('click', function() {
+		console.log(this.pack);
+	}.bind(this));
 
 	return this.rendered;
 }
