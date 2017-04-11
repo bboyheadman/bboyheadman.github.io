@@ -54,11 +54,9 @@ function getAllStickers() {
 		type: 'stickers',
 		v: 5.63
 	}, function(resp) {
-		// console.log(resp);
 		stickerPacksList.innerHTML = '';
 		PACKS = [];
 		resp.response.items.map(function(item, index) {
-			// console.log(item);
 			PACKS.push(new StickerPack(item));
 		});
 		renderAllPacks();
@@ -82,6 +80,11 @@ StickerPack.prototype.createElement = function() {
 	this.rendered.innerHTML = `
 		<img class="pack-image" src="` + this.pack.photo_70 + `">
 		<span class="pack-title">` + this.pack.product.title + `</span>
+		<ul>
+			` + this.pack.product.stickers.sticker_ids.map(function(item, index) {
+				return `<li><img src="` + (self.pack.product.stickers.base_url + item + '/128.png' ) + `" alt="" /></li>`
+			}).join('') + `
+		</ul>
 	`;
 
 	this.rendered.addEventListener('click', function() {
