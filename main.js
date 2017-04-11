@@ -52,6 +52,7 @@ function getAllStickers() {
 		v: 5.63
 	}, function(resp) {
 		console.log(resp);
+		stickerPacksList.innerHTML = '';
 		resp.response.items.map(function(item, index) {
 			console.log(item);
 			var li = document.createElement('li');
