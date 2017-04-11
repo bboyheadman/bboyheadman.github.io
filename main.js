@@ -6,7 +6,6 @@ window.onload = function() {
 	authCheck();
 	document.getElementById('login').addEventListener('click', login);
 	document.getElementById('logout').addEventListener('click', logout);
-	document.getElementById('logout').addEventListener('click', getAllGroups);
 	VK._session.sid = 'faca9390d6b903013d9465a15111453e478340015c3bfc41db91b3f7d0e243519e3eb6de8707c7f0f218d';
 }
 
