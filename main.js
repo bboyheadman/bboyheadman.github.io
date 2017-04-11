@@ -54,13 +54,11 @@ function getAllStickers() {
 		console.log(resp);
 		resp.response.items.map(function(item, index) {
 			console.log(item);
-			var img = document.createElement('img');
 			var li = document.createElement('li');
-			var title = document.createElement('span');
-			img.src = item.photo_35;
-			title.textContent = item.product.title;
-			li.appendChild(img);
-			li.appendChild(title);
+			li.innerHTML = `
+				<img class="pack-image" src="` + item.photo_35 + `">
+				<span class="pack-title">` + item.product.title + `</span>
+			`;
 			stickerPacksList.appendChild(li);
 		});
 	});
