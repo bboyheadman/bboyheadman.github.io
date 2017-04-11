@@ -98,7 +98,7 @@ StickerPack.prototype.createElement = function() {
 				var sticker = document.createElement('img');
 				sticker.src = (self.pack.product.stickers.base_url + item + '/128.png' );
 				sticker.addEventListener('click', function(e) {
-					console.log(e);
+					console.log(this);
 				});
 				self.allStickersRenderedList.appendChild(sticker);
 			});
