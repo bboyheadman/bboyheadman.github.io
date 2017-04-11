@@ -72,6 +72,8 @@ function renderAllPacks() {
 function StickerPack(pack) {
 	this.pack = pack;
 	this.rendered = document.createElement('li');
+	this.allStickersRenderedList = document.createElement('div');
+	this.opened = false;
 }
 
 StickerPack.prototype.createElement = function() {
@@ -80,15 +82,21 @@ StickerPack.prototype.createElement = function() {
 	this.rendered.innerHTML = `
 		<img class="pack-image" src="` + this.pack.photo_70 + `">
 		<span class="pack-title">` + this.pack.product.title + `</span>
-		<ul>
-			` + this.pack.product.stickers.sticker_ids.map(function(item, index) {
-				return `<li><img src="` + (self.pack.product.stickers.base_url + item + '/128.png' ) + `" alt="" /></li>`
-			}).join('') + `
-		</ul>
 	`;
+	this.rendered.appendChild(this.allStickersRenderedList);
 
 	this.rendered.addEventListener('click', function() {
 		console.log(this.pack);
+		if (this.opened) {
+			this.pack.product.stickers.sticker_ids.map(function(item, index) {
+				var img = document.createElement('img');
+				img.src = (self.pack.product.stickers.base_url + item + '/128.png' );
+				this.allStickersRenderedList.appendChild(img);
+			});
+		} else {
+			this.allStickersRenderedList.innerHTML = '';
+		}
+		this.opened = !this.opened;
 	}.bind(this));
 
 	return this.rendered;

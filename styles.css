@@ -23,3 +23,7 @@
   display: block;
   font: 1em Arial;
 }
+
+img {
+  width: 60px;
+}
