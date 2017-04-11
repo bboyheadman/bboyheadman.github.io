@@ -56,10 +56,10 @@ function getAllStickers() {
 	}, function(resp) {
 		console.log(resp);
 		stickerPacksList.innerHTML = '';
-		ROWS = [];
+		PACKS = [];
 		resp.response.items.map(function(item, index) {
 			console.log(item);
-			ROWS.push(new StickerPack(item));
+			PACKS.push(new StickerPack(item));
 		});
 		renderAllPacks();
 	});
