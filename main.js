@@ -95,12 +95,12 @@ StickerPack.prototype.createElement = function() {
 		console.log(this);
 		if (this.closed) {
 			this.pack.product.stickers.sticker_ids.map(function(item, index) {
-				var img = document.createElement('img');
-				img.src = (self.pack.product.stickers.base_url + item + '/128.png' );
-				img.addEventListener('click', function(e) {
+				var sticker = document.createElement('img');
+				sticker.src = (self.pack.product.stickers.base_url + item + '/128.png' );
+				sticker.addEventListener('click', function(e) {
 					console.log(e);
 				});
-				self.allStickersRenderedList.appendChild(img);
+				self.allStickersRenderedList.appendChild(sticker);
 			});
 		} else {
 			this.allStickersRenderedList.innerHTML = '';
