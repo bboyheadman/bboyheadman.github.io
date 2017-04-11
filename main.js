@@ -85,7 +85,7 @@ StickerPack.prototype.createElement = function() {
 	this.rendered.appendChild(packAvatar);
 
 	var packTitle = document.createElement('span');
-	packTitle.src = this.pack.product.title;
+	packTitle.textContent = this.pack.product.title;
 	packTitle.className = 'pack-title';
 	this.rendered.appendChild(packTitle);
 
