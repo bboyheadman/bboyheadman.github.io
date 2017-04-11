@@ -73,7 +73,7 @@ function StickerPack(pack) {
 	this.pack = pack;
 	this.rendered = document.createElement('li');
 	this.allStickersRenderedList = document.createElement('div');
-	this.opened = false;
+	this.closed = true;
 }
 
 StickerPack.prototype.createElement = function() {
@@ -87,7 +87,7 @@ StickerPack.prototype.createElement = function() {
 
 	this.rendered.addEventListener('click', function() {
 		console.log(this.pack);
-		if (!this.opened) {
+		if (this.closed) {
 			this.pack.product.stickers.sticker_ids.map(function(item, index) {
 				var img = document.createElement('img');
 				img.src = (self.pack.product.stickers.base_url + item + '/128.png' );
@@ -96,7 +96,7 @@ StickerPack.prototype.createElement = function() {
 		} else {
 			this.allStickersRenderedList.innerHTML = '';
 		}
-		this.opened = !this.opened;
+		this.closed = !this.closed;
 	}.bind(this));
 
 	return this.rendered;
