@@ -99,7 +99,7 @@ StickerPack.prototype.createElement = function() {
 				sticker.src = (self.pack.product.stickers.base_url + item + '/128.png' );
 				sticker.addEventListener('click', function(e) {
 					console.log(this);
-					this.cell.style.width = '100px';
+					this.cell.src = (self.pack.product.stickers.base_url + item + '/512.png');
 				}.bind({
 					id: item,
 					cell: sticker,
