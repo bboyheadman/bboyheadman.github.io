@@ -1,3 +1,6 @@
+var loginButton,
+	logoutButton;
+
 var GE = {
 	title: document.querySelector('title'),
 }
@@ -8,10 +11,22 @@ var stickerPacksList = document.getElementById('sticker-packs-list');
 
 window.onload = function() {
 	authCheck();
-	document.getElementById('login').addEventListener('click', login);
-	document.getElementById('logout').addEventListener('click', logout);
+
+	loginButton = document.getElementById('login');
+	loginButton.addEventListener('click', login);
+
+	logoutButton = document.getElementById('logout');
+	logoutButton.addEventListener('click', logout);
+
+	if (VK._session) {
+		logoutButton.style.display = 'block';
+		loginButton.style.display = 'none';
+	} else {
+		logoutButton.style.display = 'none';
+		loginButton.style.display = 'block';
+	}
+
 	// https://oauth.vk.com/authorize?client_id=5744830&v=5.7&scope=notify&redirect_uri=https://oauth.vk.com/blank.html&display=page&response_type=token
-	getAllStickers();
 }
 
 

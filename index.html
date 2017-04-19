@@ -4,14 +4,51 @@
   <meta charset="UTF-8">
   <title>VK</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #login,
+    #logout {
+      position: fixed;
+      right: 0;
+      top: 0;
+    }
+    #form {
+      display: inline-block;
+      width: 200px;
+      height: 166px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+    #form * {
+      height: 30px;
+      margin: 3px;
+      border: 0;
+      background: #eee;
+      width: 100%;
+      display: block;
+    }
+    #form textarea {
+      height: 100px;
+    }
+  </style>
 </head>
 <body>
 
 <button id="login">Авторизироватся</button>
 <button id="logout">Выход</button>
 
-<ul class="sticker-packs-wrapper" id="sticker-packs-list"></ul>
-
+  <div id="form">
+    <input type="text" id="method" placeholder="Метод">
+    <textarea id="params" placeholder="Параметры"></textarea>
+    <button id="submit">Отправить запрос</button>
+  </div>
 
   <script src="https://vk.com/js/api/openapi.js" type="text/javascript"></script>
   <script>
