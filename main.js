@@ -26,7 +26,6 @@ function login() {
 		console.log(authData);
 		localStorage.setItem('auth', JSON.stringify(authData.session));
 		var auth = JSON.parse(localStorage.getItem('auth'));
-		GE.title.textContent = (auth.user.first_name + ' ' + auth.user.last_name);
 	}, 140492191 - 4096);
 }
 
@@ -36,7 +35,6 @@ function logout() {
 		VK.Auth.logout(function(authData) {
 			localStorage.setItem('auth', '');
 			console.log(authData);
-			GE.title.textContent = 'Авторизируйтесь';
 		});
 	}
 }
