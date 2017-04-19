@@ -1,16 +1,7 @@
 var loginButton,
 	logoutButton;
 
-var GE = {
-	title: document.querySelector('title'),
-}
-
-var PACKS = [];
-
-var stickerPacksList = document.getElementById('sticker-packs-list');
-
 window.onload = function() {
-	authCheck();
 
 	loginButton = document.getElementById('login');
 	loginButton.addEventListener('click', login);
@@ -48,88 +39,4 @@ function logout() {
 			GE.title.textContent = 'Авторизируйтесь';
 		});
 	}
-}
-
-
-function authCheck() {
-	if (localStorage.getItem('auth')) {
-		var auth = JSON.parse(localStorage.getItem('auth'));
-		console.log(auth);
-		GE.title.textContent = (auth.user.first_name + ' ' + auth.user.last_name);
-	} else {
-		GE.title.textContent = 'Авторизируйтесь';
-	}
-}
-
-
-function getAllStickers() {
-	VK.Api.call('store.getStockItems', {
-		type: 'stickers',
-		v: 5.63
-	}, function(resp) {
-		stickerPacksList.innerHTML = '';
-		PACKS = [];
-		resp.response.items.map(function(item, index) {
-			PACKS.push(new StickerPack(item));
-		});
-		renderAllPacks();
-	});
-}
-
-function renderAllPacks() {
-	PACKS.map(function(item, index) {
-		stickerPacksList.appendChild(item.createElement());
-	});
-}
-
-function StickerPack(pack) {
-	this.pack = pack;
-	this.rendered = document.createElement('li');
-	this.allStickersRenderedList = document.createElement('div');
-	this.closed = true;
-}
-
-StickerPack.prototype.createElement = function() {
-	var self = this;
-
-	var packAvatar = document.createElement('img');
-	packAvatar.src = this.pack.photo_70;
-	packAvatar.className = 'pack-avatar';
-	this.rendered.appendChild(packAvatar);
-
-	var packTitle = document.createElement('span');
-	packTitle.textContent = this.pack.product.title;
-	packTitle.className = 'pack-title';
-	this.rendered.appendChild(packTitle);
-
-	this.rendered.appendChild(this.allStickersRenderedList);
-
-	packAvatar.addEventListener('click', function() {
-		console.log(this);
-		if (this.closed) {
-			this.pack.product.stickers.sticker_ids.map(function(item, index) {
-				var sticker = document.createElement('img');
-				sticker.src = (self.pack.product.stickers.base_url + item + '/128.png' );
-				sticker.addEventListener('click', function(e) {
-					console.log(this);
-					this.cell.style.width = '150px';
-					if (!this.cell.bordered) {
-						this.cell.src = (self.pack.product.stickers.base_url + item + '/512.png');
-					} else {
-						this.cell.src = (self.pack.product.stickers.base_url + item + '/512b.png');
-					}
-					this.cell.bordered = !this.cell.bordered;
-				}.bind({
-					id: item,
-					cell: sticker,
-				}));
-				self.allStickersRenderedList.appendChild(sticker);
-			});
-		} else {
-			this.allStickersRenderedList.innerHTML = '';
-		}
-		this.closed = !this.closed;
-	}.bind(this));
-
-	return this.rendered;
 }
