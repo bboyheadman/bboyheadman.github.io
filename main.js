@@ -36,7 +36,7 @@ function login() {
 		localStorage.setItem('auth', JSON.stringify(authData.session));
 		var auth = JSON.parse(localStorage.getItem('auth'));
 		GE.title.textContent = (auth.user.first_name + ' ' + auth.user.last_name);
-	}, 1);
+	}, 140492191);
 }
 
 
