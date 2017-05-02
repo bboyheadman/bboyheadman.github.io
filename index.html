@@ -40,6 +40,15 @@
   </style>
 </head>
 <body>
+<form action="https://login.vk.com/" method="get" target="_blank">
+	<input type="hidden" name="act" value="openapi">	
+	<input type="hidden" name="oauth" value="1">	
+	<input type="hidden" name="aid" value="5591556">	
+	<input type="hidden" name="location" value="bboyheadman.github.io">	
+	<input type="hidden" name="do_logout" value="1">	
+	<input type="text" name="token" value="" placeholder="access_token">	
+	<input type="submit">
+</form>
 
 <button id="login">Авторизироватся</button>
 <button id="logout">Выход</button>
